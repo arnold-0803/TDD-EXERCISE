@@ -1,4 +1,5 @@
 import capitalize from "./capitalize.js";
+
 test("Capitalize", () => {
   expect("").toBe("");
 });
