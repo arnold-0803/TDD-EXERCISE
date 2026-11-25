@@ -29,3 +29,11 @@ test("Preserve uppercase letters", () => {
 test("Wrap uppercase Z around to A", () => {
   expect(caesarCipher("Z", 1)).toBe("A");
 });
+
+test("Preserve mixed case, spaces and punctuation", () => {
+  expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+});
+
+test("Wrap around with a negative shift", () => {
+  expect(caesarCipher("a", -1)).toBe("z");
+});
