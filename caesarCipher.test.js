@@ -21,3 +21,11 @@ import caesarCipher from "./caesarCipher.js";
 test("Shift a whole lowercase message", () => {
   expect(caesarCipher("hello", 3)).toBe("khoor");
 });
+
+test("Preserve uppercase letters", () => {
+  expect(caesarCipher("ABC", 3)).toBe("DEF");
+});
+
+test("Wrap uppercase Z around to A", () => {
+  expect(caesarCipher("Z", 1)).toBe("A");
+});

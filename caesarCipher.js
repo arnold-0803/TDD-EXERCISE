@@ -3,11 +3,13 @@ function shiftLetter(str, shift) {
 
   // const shiftedCode = charCode + shift;
 
-  const position = charCode - 97;
+  const baseCode = str >= "A" && str <= "Z" ? 65 : 97;
 
-  const shiftedPosition = (position + shift) % 26;
+  const position = charCode - baseCode;
 
-  const shiftedCode = shiftedPosition + 97;
+  const shiftedPosition = ((position + shift) % 26 + 26) % 26;
+
+  const shiftedCode = shiftedPosition + baseCode;
 
   return String.fromCharCode(shiftedCode);
 }
@@ -17,8 +19,15 @@ function caesarCipher(str, shift) {
   let encryptedText = "";
 
   for(const char of str){
-    const shiftedLetter = shiftLetter(char, shift);
-    encryptedText += shiftedLetter;
+    if(char >= "a" && char <= "z"){
+      const shiftedLetter = shiftLetter(char, shift);
+      encryptedText += shiftedLetter;
+    }else if(char >= "A" && char <= "Z") {
+      const shiftedLetter = shiftLetter(char, shift);
+      encryptedText += shiftedLetter;
+    }else{
+      encryptedText += char;
+    }
   }
 
   return encryptedText;
